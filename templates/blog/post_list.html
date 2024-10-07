@@ -12,5 +12,15 @@
 <p> To jest Akapit</p>
 <em>to jest wyróżniony tekst</em><br>
 <strong>Tu jest pogrubiony</strong>
+    {% comment "Komentarz autora"%}
+    <p>Lista postów. To tylko komentarz</p>
+    {% endcomment %}
+    {% for post in posts %}
+<div>
+    <p> opublikowano : {{post.publish_date}}</p>
+    <h2><a href="">{{post.title}}</a></h2>
+    <em>{{post.text|linebreaksbr}}</em>
+</div>
+{% endfor %}
 </body>
 </html>
