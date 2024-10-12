@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog dla programistów</title>
-</head>
-<body>
-<h1>Witam na stronie bloga!</h1>
-<h2>Blog o programowaniu</h2>
-<h3>Autor: PA</h3>
-<h4>Wszelkie prawa dozwolone</h4>
-<p> To jest Akapit</p>
-<em>to jest wyróżniony tekst</em><br>
-<strong>Tu jest pogrubiony</strong>
-    {% comment "Komentarz autora"%}
-    <p>Lista postów. To tylko komentarz</p>
-    {% endcomment %}
-    {% for post in posts %}
-<div>
-    <p> opublikowano : {{post.publish_date}}</p>
-    <h2><a href="">{{post.title}}</a></h2>
-    <em>{{post.text|linebreaksbr}}</em>
-</div>
-{% endfor %}
-</body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+        {% for post in posts %}
+
+            <div class="post">
+                <div class="data"><p> opublikowano : {{post.publish_date}}</p></div>
+                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h2>
+                <em>{{post.text|linebreaksbr}}</em>
+            </div>
+            {% endfor %}
+{% endblock %}
+
